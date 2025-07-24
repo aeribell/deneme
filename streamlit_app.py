@@ -41,8 +41,7 @@ drop_threshold = st.sidebar.slider(
 features = [
     "Power Consumption (kW)", "Reactive Power (kVAR)", "Power Factor",
     "Solar Power (kW)", "Wind Power (kW)", "Grid Supply (kW)",
-    "Temperature (°C)", "Humidity (%)", "Electricity Price (USD/kWh)",
-    "Predicted Load (kW)", "Güç Tüketimi (kW)", "Toplam Hat Mesafesi (m)"
+    "Temperature (°C)", "Humidity (%)", "Electricity Price (USD/kWh)", "Güç Tüketimi (kW)", "Toplam Hat Mesafesi (m)"
 ]
 target = "Gerilim Düşümü (V)"
 
