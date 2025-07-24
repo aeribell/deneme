@@ -19,3 +19,7 @@ Use the sidebar to select a house and adjust the voltage drop threshold. The app
 ## Dataset
 
 The application loads `dataset.csv` at startup and computes basic summary statistics (mean, standard deviation, min and max) for all numeric columns. These statistics are displayed below the model metrics so you can better understand the ranges the model uses when detecting voltage drops.
+
+## LSTM (Long Short-Term Memory) – Zaman Serisi Tahmini
+
+Gerilim düşümünü geçmiş verilere bakarak zaman serisi şeklinde tahmin etmek için LSTM tabanlı bir model kullanılabilir. `lstm_forecast.py` dosyası, `dataset.csv` üzerinde temel bir LSTM eğitimi örneği içerir.
