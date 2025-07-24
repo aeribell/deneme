@@ -6,7 +6,7 @@ This repository contains a Streamlit application that trains a machine learning 
 
 1. Install the dependencies:
    ```bash
-   pip install pandas scikit-learn matplotlib streamlit
+   pip install pandas scikit-learn matplotlib plotly streamlit
    ```
 
 2. Start the Streamlit app:
