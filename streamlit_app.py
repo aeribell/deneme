@@ -12,7 +12,7 @@ st.title("🔌 Smart Grid - Gerilim Düşümü Tespiti")
 @st.cache_data
 
 def load_data():
-    return pd.read_csv("dataset.csv")
+    return pd.read_csv("dataset_1.csv")
 
 df = load_data()
 
