@@ -15,3 +15,7 @@ This repository contains a Streamlit application that trains a machine learning 
    ```
 
 Use the sidebar to select a house and adjust the voltage drop threshold. The app displays model metrics, voltage drop detection accuracy and feature importances.
+
+## Dataset
+
+The application loads `dataset.csv` at startup and computes basic summary statistics (mean, standard deviation, min and max) for all numeric columns. These statistics are displayed below the model metrics so you can better understand the ranges the model uses when detecting voltage drops.

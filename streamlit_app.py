@@ -21,11 +21,12 @@ st.markdown(
 st.title("🔌 Smart Grid - Gerilim Düşümü Tespiti")
 
 @st.cache_data
-
 def load_data():
-    return pd.read_csv("dataset_1.csv")
+    df = pd.read_csv("dataset.csv")
+    stats = df.describe().T
+    return df, stats
 
-df = load_data()
+df, dataset_stats = load_data()
 
 # --- Sidebar ---
 st.sidebar.header("Filtreler")
@@ -82,6 +83,10 @@ c1, c2, c3 = st.columns(3)
 c1.metric("Doğruluk", f"{accuracy:.2f}")
 c2.metric("Kesinlik", f"{precision:.2f}")
 c3.metric("Duyarlılık", f"{recall:.2f}")
+
+# --- Dataset Summary Statistics ---
+st.subheader("Veri Kümesi İstatistikleri")
+st.dataframe(dataset_stats, use_container_width=True)
 
 # --- Grafik ---
 chart_df = pd.DataFrame({"Gerçek": y_test.values[:200], "Tahmin": y_pred[:200]})
