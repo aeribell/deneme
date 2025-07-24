@@ -1,12 +1,23 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # Sayfa ayarları
 st.set_page_config(page_title="Smart Grid AI", layout="wide")
+st.markdown(
+    """
+    <style>
+    .main {
+        background-color: #f0f2f6;
+        font-family: Arial, sans-serif;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 st.title("🔌 Smart Grid - Gerilim Düşümü Tespiti")
 
 @st.cache_data
@@ -49,9 +60,10 @@ mse = mean_squared_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
 
 st.subheader(f"Gerilim Düşümü Tahmin Performansı - {ev_sec}")
-st.metric("MAE", f"{mae:.2f} V")
-st.metric("MSE", f"{mse:.2f}")
-st.metric("R²", f"{r2:.3f}")
+col1, col2, col3 = st.columns(3)
+col1.metric("MAE", f"{mae:.2f} V")
+col2.metric("MSE", f"{mse:.2f}")
+col3.metric("R²", f"{r2:.3f}")
 
 # --- Gerilim Düşümü Tespiti ---
 y_pred_series = pd.Series(y_pred, index=y_test.index)
@@ -66,18 +78,20 @@ precision = tp / (tp + fp) if (tp + fp) else 0
 recall = tp / (tp + fn) if (tp + fn) else 0
 
 st.subheader("Gerilim Düşümü Tespit Metriği")
-st.metric("Doğruluk", f"{accuracy:.2f}")
-st.metric("Kesinlik", f"{precision:.2f}")
-st.metric("Duyarlılık", f"{recall:.2f}")
+c1, c2, c3 = st.columns(3)
+c1.metric("Doğruluk", f"{accuracy:.2f}")
+c2.metric("Kesinlik", f"{precision:.2f}")
+c3.metric("Duyarlılık", f"{recall:.2f}")
 
 # --- Grafik ---
-fig, ax = plt.subplots(figsize=(10, 4))
-ax.plot(y_test.values[:200], label="Gerçek", marker='o')
-ax.plot(y_pred[:200], label="Tahmin", marker='x')
-ax.set_title("Gerilim Düşümü Tahmini vs Gerçek Değer")
-ax.set_ylabel("Gerilim Düşümü (V)")
-ax.legend()
-st.pyplot(fig)
+chart_df = pd.DataFrame({"Gerçek": y_test.values[:200], "Tahmin": y_pred[:200]})
+fig = px.line(chart_df, markers=True)
+fig.update_layout(
+    title="Gerilim Düşümü Tahmini vs Gerçek Değer",
+    yaxis_title="Gerilim Düşümü (V)",
+    xaxis_title="Index",
+)
+st.plotly_chart(fig, use_container_width=True)
 
 # --- Feature Importance ---
 st.subheader("Özellik Önemleri")
