@@ -22,8 +22,3 @@ The application loads `dataset.csv` at startup and computes basic summary statis
 
 ## LSTM (Long Short-Term Memory) – Zaman Serisi Tahmini
 
-Gerilim düşümünü geçmiş verilere bakarak zaman serisi şeklinde tahmin etmek için LSTM tabanlı bir model de kullanılabilir. `lstm_forecast.py` betiği, `dataset.csv` üzerinde temel bir LSTM eğitimi örneği içerir. Çalıştırmak için aşağıdaki komutu kullanabilirsiniz:
-
-```bash
-python lstm_forecast.py
-```
