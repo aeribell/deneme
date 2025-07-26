@@ -6,7 +6,7 @@ This repository contains a Streamlit application that trains a machine learning 
 
 1. Install the dependencies:
    ```bash
-   pip install pandas scikit-learn matplotlib plotly streamlit
+   pip install -r requirements.txt
    ```
 
 2. Start the Streamlit app:
@@ -22,4 +22,4 @@ The application loads `dataset.csv` at startup and computes basic summary statis
 
 ## LSTM (Long Short-Term Memory) – Zaman Serisi Tahmini
 
-Gerilim düşümünü geçmiş verilere bakarak zaman serisi şeklinde tahmin etmek için LSTM tabanlı bir model kullanılabilir. `lstm_forecast.py` dosyası, `dataset.csv` üzerinde temel bir LSTM eğitimi örneği içerir.
+Gerilim düşümünü geçmiş verilere bakarak zaman serisi şeklinde tahmin etmek için uygulamada **LSTM Tahmini** sayfası bulunmaktadır. Streamlit uygulamasını çalıştırdıktan sonra kenar çubuğundan bu sayfayı seçip modeli eğitebilir ve test kaybını görüntüleyebilirsiniz.
